@@ -14,12 +14,18 @@ admin.initializeApp({
 // Log when Firebase is connected successfully
 console.log('Connected to Firebase');
 
+
+// Connect to PostgreSQL 
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'products', // Your PostgreSQL database name
   password: 'mysecretpassword',
   port: 5432,
+});
+
+pool.on('connect', () => {
+  console.log('Connected to PostgreSQL');
 });
 
 // Intialize MongoDB Atlas
